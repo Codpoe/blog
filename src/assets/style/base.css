@@ -1,0 +1,24 @@
+@import '/normalize.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+ul {
+  list-style: none;
+}
+
+.page {
+  min-width: 100vw;
+  min-height: 100vh;
+}
