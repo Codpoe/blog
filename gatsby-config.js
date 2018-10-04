@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Codpoe 的个人站点',
+    author: 'Codpoe',
+    desc: 'Codpoe 的个人博客',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

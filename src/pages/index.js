@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 
 import '../assets/style/base.css';
 import '../assets/style/index-page.css';
@@ -22,3 +23,14 @@ class IndexPage extends React.Component {
 }
 
 export default IndexPage;
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        author
+        desc
+      }
+    }
+  }
+`;
