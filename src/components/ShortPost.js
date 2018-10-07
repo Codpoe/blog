@@ -11,7 +11,7 @@ class ShortPost extends React.Component {
 
   render() {
     const { frontmatter, excerpt } = this.props;
-    const { title, date, category, img } = frontmatter;
+    const { slug, title, date, category, img } = frontmatter;
     let imgList = [];
 
     if (img) {
@@ -21,7 +21,9 @@ class ShortPost extends React.Component {
     return (
       <article className="short-post">
         <div className="short-post__content">
-          <h1 className="short-post__title">{title}</h1>
+          <h1 className="short-post__title">
+            <Link className="short-post__title-text" to={`/post/${slug}`}>{title}</Link>
+          </h1>
           <ul className="short-post__info">
             <span className="short-post__info-item">{date}</span>
             <Link className="short-post__info-item" to={`/category/${category}`}>{category}</Link>

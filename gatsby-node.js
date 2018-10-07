@@ -47,6 +47,7 @@ exports.createPages = ({ actions, graphql }) => {
         component: blogPage,
         context: {
           pageNum,
+          limit: pageSize,
           skip: i * pageSize
         }
       });
@@ -57,6 +58,7 @@ exports.createPages = ({ actions, graphql }) => {
           component: blogPage,
           context: {
             pageNum,
+            limit: pageSize,
             skip: 0
           }
         });

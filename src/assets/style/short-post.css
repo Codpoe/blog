@@ -1,16 +1,22 @@
 .short-post:nth-child(n+2) {
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 .short-post__content {
-  padding-bottom: 40px;
   border-bottom: 1px solid var(--border-light);
 }
 
-.short-post__title {
+.short-post__title-text {
   font-size: 20px;
+  font-weight: 500;
   color: var(--header-text-color);
   letter-spacing: 2px;
+  transition: all .2s;
+
+  &:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
 }
 
 .short-post__info {
@@ -94,8 +100,12 @@
 }
 
 @media screen and (max-width: 560px) {
-  
-  .short-post__img-wrapper:nth-child(n+2) {
-    display: none;
+
+  .short-post__img-wrapper {
+    max-width: 100%;
+
+    &:nth-child(n+2) {
+      display: none;
+    }
   }
 }

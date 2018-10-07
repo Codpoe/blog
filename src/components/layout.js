@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
+import Header from './Header'
 import '../assets/style/layout.css'
 
 class Layout extends React.Component {
@@ -53,7 +53,6 @@ export default props => (
             keywords
             author
           }
-          pathPrefix
         }
       }
     `}

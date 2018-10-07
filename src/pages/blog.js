@@ -1,16 +1,29 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import ShortPost from '../components/short-post';
+import Layout from '../components/Layout';
+import ShortPost from '../components/ShortPost';
+import Pagination from '../components/Pagination';
+import '../assets/style/blog.css';
 
 class BlogPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: props.pageContext.skip + 1
+    };
+  }
+
+  handlePageChange = page => {
+    this.setState({ page });
+    this.props.navigate(`/blog/${page}`);
+  }
+
   render() {
     const { site, allMarkdownRemark: allMd } = this.props.data;
     const { edges: posts } = allMd;
-    const { pageNum, skip } = this.props.pageContext;
-
-    console.log('prefix', pageNum, skip + 1);
+    const { pageNum } = this.props.pageContext;
+    const { page } = this.state;
 
     return (
       <Layout>
@@ -21,6 +34,14 @@ class BlogPage extends React.Component {
             key={node.id}
           />
         ))}
+
+        <div className="blog__pagination">
+          <Pagination
+            total={pageNum}
+            value={page}
+            onChange={this.handlePageChange}
+          />
+        </div>
       </Layout>
     );
   }
@@ -29,10 +50,10 @@ class BlogPage extends React.Component {
 export default BlogPage;
 
 export const query = graphql`
-  query($skip: Int) {
+  query($limit: Int, $skip: Int) {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC },
-      limit: 8,
+      limit: $limit,
       skip: $skip
     ){
       edges {
