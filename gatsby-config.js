@@ -1,10 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: 'Codpoe 的个人站点',
+    title: 'Codpoe 的个人网站',
+    description: 'Codpoe 的个人博客',
+    keywords: '个人网站 博客 随意',
     author: 'Codpoe',
-    desc: 'Codpoe 的个人博客',
+    pageSize: 1
   },
   plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'source',
+        path: `${__dirname}/src/source/`
+      }
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
@@ -19,5 +31,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
+    'gatsby-plugin-postcss'
   ],
 };

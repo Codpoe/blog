@@ -1,51 +1,62 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import './layout.css'
+import '../assets/style/layout.css'
 
-const Layout = ({ children }) => (
+class Layout extends React.Component {
+  render() {
+    const {
+      data,
+      title,
+      children
+    } = this.props;
+
+    const {
+      title: siteTitle,
+      description,
+      keywords,
+      author
+    } = data.site.siteMetadata;
+
+    return (
+      <div className="layout">
+        <Helmet
+          title={title || siteTitle}
+          meta={[
+            { name: 'description', content: description },
+            { name: 'keywords', content: keywords },
+            { name: 'author', content: author }
+          ]}
+        >
+          <html lang="zh" />
+        </Helmet>
+
+        <Header title={author} />
+        <div className="layout__content">
+          {children}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default props => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
+      query {
         site {
           siteMetadata {
             title
+            description
+            keywords
+            author
           }
+          pathPrefix
         }
       }
     `}
-    render={data => (
-      <>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
-      </>
-    )}
+    render={data => <Layout data={data} {...props} />}
   />
-)
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+);

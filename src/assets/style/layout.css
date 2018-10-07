@@ -1,0 +1,20 @@
+@import './common/common.css';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-image: url(https://www.kiyomizudera.or.jp/assets/img/common/pc_bg_01.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.layout__content {
+  flex: 1;
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 15px;
+}

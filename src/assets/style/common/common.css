@@ -1,0 +1,36 @@
+@import './icon.css';
+@import './color.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-family: "Exo 2", "Trebuchet MS","Helvetica Neue","Arial",'PingFang SC','Hiragino Sans GB','STHeiti Light','Microsoft YaHei','SimHei','WenQuanYi Micro Hei',sans-serif;
+  font-size: 16px;
+  color: var(--primary-text-color);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+span {
+  display: inline-block;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}

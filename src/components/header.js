@@ -1,33 +1,35 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </div>
-)
+import '../assets/style/header.css';
 
-export default Header
+class Header extends React.Component {
+  render() {
+    const { title } = this.props;
+
+    return (
+      <div className="header">
+        <div className="header__content">
+          <div className="header__content-main">
+            <Link to="/">
+              <h1 className="header__title">
+                <span className="header__title-text">{title}</span>
+              </h1>
+            </Link>
+            <ul className="header__menu">
+              <Link className="header__menu-item" to="/blog">首页</Link>/
+              <Link className="header__menu-item" to="/category">分类</Link>/
+              <Link className="header__menu-item" to="/archive">归档</Link>/
+              <Link className="header__menu-item" to="/about">关于</Link>
+            </ul>
+          </div>
+          <p className="header__content-desc">
+            Always believe that something wonderful is about to happen.
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Header;
